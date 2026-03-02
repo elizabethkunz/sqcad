@@ -6,8 +6,6 @@ from __future__ import annotations
 
 __all__ = ["__version__", "about"]
 
-__version__ = "0.0.1"
-
 
 def about() -> str:
     return "sqCAD (Superconducting Quantum Circuit Analysis & Design)"

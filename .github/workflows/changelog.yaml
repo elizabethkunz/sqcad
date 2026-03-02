@@ -1,0 +1,68 @@
+name: Update CHANGELOG
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update CHANGELOG.md from release notes
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+          RELEASE_BODY: ${{ github.event.release.body }}
+          RELEASE_DATE: ${{ github.event.release.published_at }}
+        run: |
+          python - <<'PY'
+          import os, re, datetime, pathlib
+
+          tag = os.environ["TAG_NAME"].lstrip("v")
+          name = os.environ.get("RELEASE_NAME") or f"v{tag}"
+          body = os.environ.get("RELEASE_BODY") or ""
+          published_at = os.environ.get("RELEASE_DATE") or ""
+          date = published_at[:10] if len(published_at) >= 10 else datetime.date.today().isoformat()
+
+          changelog_path = pathlib.Path("CHANGELOG.md")
+          if not changelog_path.exists():
+            changelog_path.write_text("# Changelog\n\n", encoding="utf-8")
+
+          existing = changelog_path.read_text(encoding="utf-8")
+
+          # Normalize body a bit
+          body = body.strip()
+          if body:
+            # Ensure bullets are markdown-friendly
+            body = re.sub(r"\r\n", "\n", body)
+          else:
+            body = "- No release notes."
+
+          entry = f"\n## [{tag}] - {date}\n\n{body}\n"
+
+          # Insert right after the first H1 heading
+          if existing.startswith("# Changelog"):
+            parts = existing.split("\n", 2)
+            if len(parts) >= 2:
+              new_text = parts[0] + "\n" + parts[1] + entry + ("\n" + parts[2] if len(parts) == 3 else "")
+            else:
+              new_text = existing + entry
+          else:
+            new_text = "# Changelog\n" + entry + "\n" + existing
+
+          changelog_path.write_text(new_text.strip() + "\n", encoding="utf-8")
+          print(f"Updated CHANGELOG.md with {tag}")
+          PY
+
+      - name: Commit and push CHANGELOG.md
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG for ${{ github.event.release.tag_name }}" || exit 0
+          git push

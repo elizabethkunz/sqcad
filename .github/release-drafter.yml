@@ -1,0 +1,28 @@
+name-template: "sqCAD v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+version-template: "$MAJOR.$MINOR.$PATCH"
+
+categories:
+  - title: "New Features"
+    labels: ["feature", "feat", "enhancement", "major"]
+  - title: "Bug Fixes"
+    labels: ["bug", "fix", "bugfix"]
+  - title: "Documentation"
+    labels: ["docs", "documentation"]
+  - title: "Maintenance"
+    labels: ["chore", "refactor", "maintenance", "ci", "testing"]
+  - title: "Performance"
+    labels: ["performance"]
+
+change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
+no-changes-template: "- No changes yet."
+
+exclude-labels:
+  - "skip-changelog"
+
+template: |
+  ## Changes
+  $CHANGES
+
+  ## Contributors
+  $CONTRIBUTORS
