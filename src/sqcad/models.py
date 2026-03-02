@@ -4,8 +4,7 @@ import numpy as np
 import skrf as rf
 from skrf import Circuit
 from skrf.media import CPW
-from utils import *
-
+from .utils import *
 from scipy.signal import find_peaks
 
 from dataclasses import dataclass, field
@@ -778,8 +777,6 @@ def approximate_Ceff_Leff_calculation(Cc1, Cc2, kappa, f_res, Z0=50):
     L_approx = 1/(w0**2 * (C_approx + Cc1 + Cc2)) 
 
     return C_approx, L_approx
-
-
 
 
 

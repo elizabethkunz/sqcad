@@ -1,6 +1,9 @@
 Tutorials
 =========
 
+These notebooks walk through common sqCAD workflows, from installation to
+designing and validating superconducting resonator structures.
+
 .. toctree::
    :maxdepth: 1
 
@@ -11,4 +14,5 @@ Tutorials
 
 .. note::
 
-   More tutorials are coming soon! If you have a specific use case you'd like to see, please open an issue or submit a PR with your example.
+   More tutorials are coming soon! If you have a specific use case you'd like
+   to see, please open an issue or submit a PR with your example.

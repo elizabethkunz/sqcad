@@ -1,5 +1,5 @@
 Tutorials
-========
+=========
 
 This section contains small, reproducible examples used throughout development.
 

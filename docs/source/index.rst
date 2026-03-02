@@ -5,7 +5,7 @@
 
 
 sqCAD Documentation
-=====
+===================
 
 **sqCAD** (*Superconducting Quantum Circuit Analysis & Design*) is a Python toolkit for
 network-based modeling, fitting, and design workflows for superconducting quantum circuits.

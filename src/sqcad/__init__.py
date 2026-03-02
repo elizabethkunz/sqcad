@@ -16,10 +16,20 @@ __status__ = "Alpha"
 __package_path__ = os.path.dirname(os.path.abspath(__file__))
 
 
-from sqcad.elements import resonators
-from sqcad import models, utils
+from .elements import resonators
+from . import models, utils
+
+
+def about() -> str:
+    """Return a short description of sqCAD."""
+    return (
+        "sqCAD (Superconducting Quantum Circuit Analysis & Design): "
+        "tools for modeling, fitting, and designing superconducting resonators."
+    )
+
 
 __all__ = [
+    "about",
     "resonators",
     "models",
     "utils",
@@ -28,14 +38,4 @@ __all__ = [
     "__copyright__",
     "__author__",
     "__status__",
-    "__repo_path__",
 ]
-
-
-# from __future__ import annotations
-
-# __all__ = ["__version__", "about"]
-
-
-# def about() -> str:
-#     return "sqCAD (Superconducting Quantum Circuit Analysis & Design)"
