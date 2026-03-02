@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use sqCAD in academic work, please cite this software."
+title: "sqCAD: Superconducting Quantum Circuit Analysis & Design"
+type: software
+authors:
+  - family-names: "Kunz"
+    given-names: "Elizabeth"
+  - family-names: "Levenson Falk"
+    given-names: "Eli"
+repository-code: "https://github.com/elizabethkunz/sqcad"
+url: "https://elizabethkunz.github.io/sqcad/"
+license: "MIT"
+keywords:
+  - superconducting circuits
+  - quantum devices
+  - circuit design
+  - microwave engineering
+  - scikit-rf
+  - S-parameters
+  - resonators
+  - circuit modeling
+
+version: 0.0.1
+date-released: 2026-03-01

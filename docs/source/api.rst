@@ -1,8 +1,11 @@
-API
-===
+API Reference
+=============
+
+Top-level
+---------
 
 .. autosummary::
    :toctree: generated
-   :recursive:
+   :nosignatures:
 
-   sqcad
+   sqcad.about

@@ -48,10 +48,23 @@ autosummary_generate = True
 html_theme = "pydata_sphinx_theme"
 html_title = "sqCAD"
 
+html_theme_options = {
+    "github_url": "https://github.com/elizabethkunz/sqcad",
+    "navbar_start": ["navbar-logo"],
+    "navbar_center": ["navbar-nav"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
+}
+
+html_logo = "_static/sqcad_logo.png"   # optional
+html_favicon = "_static/favicon.ico"   # optional
+
 
 html_theme_options = {
     "github_url": "https://github.com/elizabethkunz/sqcad",
 }
+
+extensions += ["sphinx.ext.autosummary", "sphinx.ext.autodoc"]
+autosummary_generate = True
 
 
 copyright = f"{date.today().year}, Elizabeth Kunz, Eli Levenson Falk"
